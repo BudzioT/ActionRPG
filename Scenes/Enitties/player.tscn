@@ -1,0 +1,70 @@
+[gd_scene load_steps=8 format=3 uid="uid://d1e6vq3klftou"]
+
+[ext_resource type="Texture2D" uid="uid://cgg24qsmsiwer" path="res://Assets/Graphics/Actor/Characters/Princess/SpriteSheet.png" id="1_xxm55"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_afypf"]
+atlas = ExtResource("1_xxm55")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_drbcu"]
+atlas = ExtResource("1_xxm55")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mb48r"]
+atlas = ExtResource("1_xxm55")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4crms"]
+atlas = ExtResource("1_xxm55")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pl1bo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_afypf")
+}],
+"loop": true,
+"name": &"Idle_Back",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_drbcu")
+}],
+"loop": true,
+"name": &"Idle_Front",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mb48r")
+}],
+"loop": true,
+"name": &"Idle_Left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4crms")
+}],
+"loop": true,
+"name": &"Idle_Right",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8l00b"]
+radius = 7.0
+
+[node name="Player" type="CharacterBody2D"]
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_pl1bo")
+animation = &"Idle_Front"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_8l00b")
+
+[node name="Camera" type="Camera2D" parent="."]
+zoom = Vector2(3.5, 3.5)
