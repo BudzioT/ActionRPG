@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://d1e6vq3klftou"]
+[gd_scene load_steps=9 format=3 uid="uid://d1e6vq3klftou"]
 
+[ext_resource type="Script" path="res://Scenes/Enitties/player.gd" id="1_7b0rh"]
 [ext_resource type="Texture2D" uid="uid://cgg24qsmsiwer" path="res://Assets/Graphics/Actor/Characters/Princess/SpriteSheet.png" id="1_xxm55"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_afypf"]
@@ -57,6 +58,7 @@ animations = [{
 radius = 7.0
 
 [node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_7b0rh")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_pl1bo")
