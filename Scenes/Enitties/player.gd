@@ -1,12 +1,16 @@
 extends CharacterBody2D
 
+
 """----------------------- GLOBAL VARIABLES -----------------------"""
 # Movement variables
 @export_category("Movement")
 @export var speed: float = 100.0
 @export var deceleration: float = 300.0
 
+@onready var sprite: PlayerSprite = $Sprite
 
+
+"""----------------------- BUILT-IN FUNCTIONS -----------------------"""
 func _physics_process(delta: float) -> void:
 	"""Process physics changes"""
 	# Get the direction
