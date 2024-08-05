@@ -2,6 +2,8 @@ class_name InventorySlot
 extends VBoxContainer
 
 
+"""----------------------- SIGNALS -----------------------"""
+signal equip_item(type: String)
 
 """----------------------- GLOBAL VARIABLES -----------------------"""
 # Inventory flags
@@ -54,7 +56,14 @@ func _ready() -> void:
 """----------------------- USER-DEFINED FUNCTIONS -----------------------"""
 func _popup_menu_item_pressed(id: int) -> void:
 	"""Handle player pressing the menu"""
-	print_debug(id)
+	var pressed_item = menu_button.get_popup().get_item_text(id)
+	
+	# If player pressed drop, drop the item
+	if pressed_item == "Drop":
+		pass
+	# Otherwise if player choose to equipt it, do it if it's possible
+	elif pressed_item.contains("Equip") and slot_type != "Normal":
+		equip_item.emit(slot_type)
 	
 func add_item(item: InventoryItem):
 	"""Add an item to the slot"""

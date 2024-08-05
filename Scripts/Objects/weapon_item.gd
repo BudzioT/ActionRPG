@@ -43,5 +43,23 @@ func get_direction_data(direction: String):
 			return {
 				"Attachment": left_attachment,
 				"Rotation": left_rotation,
-				
+				"Depth": left_depth_index
+			}
+		"Right":
+			return {
+				"Attachment": right_attachment,
+				"Rotation": right_rotation,
+				"Depth": right_depth_index
+			}
+		"Front":
+			return {
+				"Attachment": front_attachment,
+				"Rotation": front_rotation,
+				"Depth": front_depth_index
+			}
+		"Back":
+			return {
+				"Attachment": back_attachment,
+				"Rotation": back_rotation,
+				"Depth": back_depth_index
 			}

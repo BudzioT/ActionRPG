@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=4 uid="uid://bscfy46mrt3wf"]
+[gd_scene load_steps=6 format=4 uid="uid://bscfy46mrt3wf"]
 
 [ext_resource type="PackedScene" uid="uid://ypqdth2rbuv0" path="res://Scenes/Levels/Level.tscn" id="1_jrpi1"]
 [ext_resource type="PackedScene" uid="uid://d1e6vq3klftou" path="res://Scenes/Enitties/player.tscn" id="2_3a7md"]
 [ext_resource type="PackedScene" uid="uid://c6mc0jjq1xges" path="res://Scenes/Objects/pick_up_item.tscn" id="2_87h7g"]
 [ext_resource type="Resource" uid="uid://b416ldd73l6n" path="res://Resources/Coin/coin.tres" id="3_3vdjl"]
+[ext_resource type="Resource" uid="uid://dph3n4jqvwsjm" path="res://Resources/Weapons/Sword/sword_inventory.tres" id="4_4hmgg"]
 
 [node name="Level" instance=ExtResource("1_jrpi1")]
 
@@ -34,6 +35,11 @@ amount = 60
 [node name="PickUpItem2" parent="Main/Items/Coins" index="1" instance=ExtResource("2_87h7g")]
 position = Vector2(3, -26)
 inventory_item = ExtResource("3_3vdjl")
+amount = 60
+
+[node name="PickUpItem3" parent="Main/Items/Coins" index="2" instance=ExtResource("2_87h7g")]
+position = Vector2(35, -17)
+inventory_item = ExtResource("4_4hmgg")
 amount = 60
 
 [node name="Player" parent="Main/Entities" index="0" instance=ExtResource("2_3a7md")]

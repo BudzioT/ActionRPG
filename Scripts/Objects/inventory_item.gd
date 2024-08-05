@@ -12,6 +12,7 @@ var placement: String = "Normal"
 @export var max_amount: int
 @export var price: int
 @export var name: String
+@export var weapon_item: WeaponItem
 
 # Style variables
 @export_category("Style")

@@ -27,6 +27,8 @@ func _ready() -> void:
 		# Create an inventory slot and add it to the container
 		var inventory_slot = INVENTORY_SLOT_SCENE.instantiate()
 		item_container.add_child(inventory_slot)
+		
+	# Connect the right singal to equipt an item
 
 """----------------------- USER-DEFINED FUNCTIONS -----------------------"""
 func toggle() -> void:

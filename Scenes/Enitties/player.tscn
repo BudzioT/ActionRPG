@@ -196,10 +196,11 @@ script = ExtResource("1_7b0rh")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_pl1bo")
-animation = &"Idle_Back"
+animation = &"Idle_Front"
 script = ExtResource("3_booqu")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 1)
 shape = ExtResource("4_iwddu")
 
@@ -207,6 +208,7 @@ shape = ExtResource("4_iwddu")
 zoom = Vector2(3.5, 3.5)
 
 [node name="ItemArea" type="Area2D" parent="."]
+visible = false
 collision_mask = 8
 
 [node name="Collision" type="CollisionShape2D" parent="ItemArea"]

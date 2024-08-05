@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=5 format=3 uid="uid://dph3n4jqvwsjm"]
+
+[ext_resource type="Shape2D" uid="uid://bs7uq7dupimnr" path="res://Resources/Weapons/Sword/sword_collision.tres" id="1_rxf0s"]
+[ext_resource type="Script" path="res://Scripts/Objects/inventory_item.gd" id="1_tsg83"]
+[ext_resource type="Texture2D" uid="uid://ca65noushjihw" path="res://Assets/Graphics/Items/Weapons/Sword2/Sprite.png" id="2_mlftn"]
+[ext_resource type="Resource" uid="uid://dy5toceqe4nk4" path="res://Resources/Weapons/Sword/sword_weapon.tres" id="4_m3nxo"]
+
+[resource]
+script = ExtResource("1_tsg83")
+placement = "Right_Weapon"
+max_amount = 1
+price = 100
+name = "Sword"
+weapon_item = ExtResource("4_m3nxo")
+collision_shape = ExtResource("1_rxf0s")
+texture = ExtResource("2_mlftn")
