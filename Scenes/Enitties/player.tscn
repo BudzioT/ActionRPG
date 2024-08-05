@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Scripts/Entities/PlayerSprite.gd" id="3_booqu"]
 [ext_resource type="Shape2D" uid="uid://c5wam68uptww0" path="res://Resources/Player/player_collision.tres" id="4_iwddu"]
 [ext_resource type="PackedScene" uid="uid://yyyh1oaw5nq7" path="res://Scenes/Ui/Inventory_ui.tscn" id="5_5c0iy"]
-[ext_resource type="Script" path="res://Scripts/Objects/inventory.gd" id="6_rie6h"]
+[ext_resource type="Script" path="res://Scripts/UI/inventory.gd" id="6_rie6h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_afypf"]
 atlas = ExtResource("1_xxm55")

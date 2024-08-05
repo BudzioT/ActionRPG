@@ -71,6 +71,7 @@ func add_item(item: InventoryItem):
 	if item.placement != "Normal":
 		# Get the popup menu
 		var popup_menu: PopupMenu = menu_button.get_popup()
+		slot_type = item.placement
 		
 		# Get the placement name, and split it with a space for style
 		var slot_name_array = item.placement.to_lower().split('_')

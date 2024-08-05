@@ -12,6 +12,11 @@ extends Node
 
 
 """----------------------- BUILT-IN FUNCTIONS -----------------------"""
+func _ready() -> void:
+	"""Prepare the inventory"""
+	# Connect the right signal to equip an item
+	inventory_ui.equip_item.connect(_item_equipped)
+
 func _input(_event: InputEvent) -> void:
 	"""Handle input events"""
 	# If player opened the inventory, open its UI
@@ -81,3 +86,8 @@ func add_multiple_inventory_item(item: InventoryItem, amount: int) -> void:
 		
 		# Update the inventory UI
 		inventory_ui.add_item(item)
+		
+func _item_equipped(index: int, slot_type: String):
+	"""Equip item with the given index"""
+	# Get the right item
+	var item = items[index]

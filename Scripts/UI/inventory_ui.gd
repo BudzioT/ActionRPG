@@ -2,6 +2,9 @@ class_name InventoryUi
 extends CanvasLayer
 
 
+"""----------------------- SIGNALS -----------------------"""
+signal equip_item(index: int, slot_type: String)
+
 
 """----------------------- GLOBAL VARIABLES -----------------------"""
 # Get reference to the container for items
@@ -28,7 +31,9 @@ func _ready() -> void:
 		var inventory_slot = INVENTORY_SLOT_SCENE.instantiate()
 		item_container.add_child(inventory_slot)
 		
-	# Connect the right singal to equipt an item
+		# Connect the right singal to equipt an item
+		inventory_slot.equip_item.connect(func(slot_type: String): \
+			equip_item.emit(cell, slot_type))
 
 """----------------------- USER-DEFINED FUNCTIONS -----------------------"""
 func toggle() -> void:
