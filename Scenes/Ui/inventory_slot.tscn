@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://70e6fp4tq1"]
+
+[node name="InventorySlot" type="VBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0

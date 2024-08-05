@@ -11,9 +11,10 @@ var amount = 1
 var placement: String = "Normal"
 @export var max_amount: int
 @export var price: int
+@export var name: String
 
 # Style variables
 @export_category("Style")
-@export var collision_shape: ConvexPolygonShape2D
+@export var collision_shape: RectangleShape2D
 @export var texture: Texture2D
 @export var side_texture: Texture2D

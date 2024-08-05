@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Entities/player.gd" id="1_7b0rh"]
 [ext_resource type="Texture2D" uid="uid://cgg24qsmsiwer" path="res://Assets/Graphics/Actor/Characters/Princess/SpriteSheet.png" id="1_xxm55"]
 [ext_resource type="Script" path="res://Scripts/Entities/PlayerSprite.gd" id="3_booqu"]
+[ext_resource type="Shape2D" uid="uid://c5wam68uptww0" path="res://Resources/Player/player_collision.tres" id="4_iwddu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_afypf"]
 atlas = ExtResource("1_xxm55")
@@ -187,9 +188,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_8l00b"]
-radius = 7.0
-
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 6
 script = ExtResource("1_7b0rh")
@@ -199,9 +197,18 @@ sprite_frames = SubResource("SpriteFrames_pl1bo")
 animation = &"Idle_Back"
 script = ExtResource("3_booqu")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
-shape = SubResource("CircleShape2D_8l00b")
+shape = ExtResource("4_iwddu")
 
 [node name="Camera" type="Camera2D" parent="."]
 zoom = Vector2(3.5, 3.5)
+
+[node name="ItemArea" type="Area2D" parent="."]
+collision_mask = 8
+
+[node name="Collision" type="CollisionShape2D" parent="ItemArea"]
+position = Vector2(0, 1)
+shape = ExtResource("4_iwddu")
+
+[connection signal="area_entered" from="ItemArea" to="." method="_item_area_entered"]

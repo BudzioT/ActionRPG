@@ -31,3 +31,11 @@ func _physics_process(delta: float) -> void:
 		
 	# Move with current velocity
 	move_and_slide()
+
+
+func _item_area_entered(area: Area2D) -> void:
+	"""Handle player colliding with an item"""
+	# If item can be picked up, pick it
+	if area is PickUpItem:
+		# Remove the item
+		area.queue_free()
