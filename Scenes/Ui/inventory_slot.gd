@@ -55,3 +55,18 @@ func _ready() -> void:
 func _popup_menu_item_pressed(id: int) -> void:
 	"""Handle player pressing the menu"""
 	print_debug(id)
+	
+func add_item(item: InventoryItem):
+	"""Add an item to the slot"""
+	# If item is equipable
+	if item.slot_type != "Normal":
+		# Get the popup menu
+		var popup_menu: PopupMenu = menu_button.get_popup()
+		
+		# Get the placement name, and split it with a space for style
+		var slot_name_array = item.placement.to_lower().split('_')
+		var slot_placement_name = " ".join(slot_name_array)
+		
+		# Set the popup menu equip text
+		popup_menu.set_item_text(0, "Equip as " + slot_placement_name)
+		

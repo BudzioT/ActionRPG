@@ -32,3 +32,11 @@ func _ready() -> void:
 func toggle() -> void:
 	"""Toggle the inventory UI"""
 	visible = !visible
+	
+func add_item(item: InventoryItem):
+	"""Add item to the UI part of the inventory"""
+	# Get all the empty slots of the inventory
+	var slots = item_container.get_children().filter(func(slot): return slot.empty)
+	# Save the first empty one, and add an item to it
+	var first_empty = slots.front() as InventorySlot
+	first_empty.add_item(item)
