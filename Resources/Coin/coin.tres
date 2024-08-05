@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_6rwi4")
 placement = "Normal"
-max_amount = 1000
+max_amount = 100
 price = 1
 name = "Coin"
 collision_shape = ExtResource("1_5v52x")

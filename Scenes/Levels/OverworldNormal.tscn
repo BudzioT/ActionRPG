@@ -29,5 +29,11 @@ tile_map_data = PackedByteArray("AAAHALz/AAALABUAAAAGALz/AAALABUAAAAIALz/AAALABU
 [node name="PickUpItem" parent="Main/Items/Coins" index="0" instance=ExtResource("2_87h7g")]
 position = Vector2(-34, -15)
 inventory_item = ExtResource("3_3vdjl")
+amount = 60
+
+[node name="PickUpItem2" parent="Main/Items/Coins" index="1" instance=ExtResource("2_87h7g")]
+position = Vector2(3, -26)
+inventory_item = ExtResource("3_3vdjl")
+amount = 60
 
 [node name="Player" parent="Main/Entities" index="0" instance=ExtResource("2_3a7md")]

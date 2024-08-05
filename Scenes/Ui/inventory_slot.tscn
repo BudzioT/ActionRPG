@@ -1,10 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://70e6fp4tq1"]
+[gd_scene load_steps=7 format=3 uid="uid://70e6fp4tq1"]
 
 [ext_resource type="Script" path="res://Scenes/Ui/inventory_slot.gd" id="1_2si73"]
 [ext_resource type="Texture2D" uid="uid://d4iopmfamhbth" path="res://Assets/Graphics/Ui/Dialog/FacesetBox.png" id="1_dmha3"]
+[ext_resource type="Theme" uid="uid://cksxks7axtpf0" path="res://Resources/Ui/fontStyle.tres" id="3_tgby1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_sd7gr"]
 font_size = 14
+
+[sub_resource type="LabelSettings" id="LabelSettings_47qg1"]
+font_color = Color(0, 0.164706, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_o0rs7"]
+font_color = Color(0, 0, 0, 1)
 
 [node name="InventorySlot" type="VBoxContainer"]
 offset_right = 40.0
@@ -61,11 +68,24 @@ offset_top = -23.0
 offset_right = 20.0
 grow_horizontal = 2
 grow_vertical = 0
+theme = ExtResource("3_tgby1")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 label_settings = SubResource("LabelSettings_sd7gr")
 horizontal_alignment = 2
 
 [node name="NameLabel" type="Label" parent="."]
 layout_mode = 2
+theme = ExtResource("3_tgby1")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+label_settings = SubResource("LabelSettings_47qg1")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="PriceLabel" type="Label" parent="."]
 layout_mode = 2
+theme = ExtResource("3_tgby1")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+label_settings = SubResource("LabelSettings_o0rs7")
+horizontal_alignment = 1
+vertical_alignment = 1

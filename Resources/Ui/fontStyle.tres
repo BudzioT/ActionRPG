@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cksxks7axtpf0"]
+
+[ext_resource type="FontFile" uid="uid://b73kvp8n6mpo1" path="res://Assets/Graphics/Ui/Font/NormalFont.ttf" id="1_tnikm"]
+
+[resource]
+default_font = ExtResource("1_tnikm")

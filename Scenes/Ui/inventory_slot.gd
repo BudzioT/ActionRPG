@@ -59,7 +59,7 @@ func _popup_menu_item_pressed(id: int) -> void:
 func add_item(item: InventoryItem):
 	"""Add an item to the slot"""
 	# If item is equipable
-	if item.slot_type != "Normal":
+	if item.placement != "Normal":
 		# Get the popup menu
 		var popup_menu: PopupMenu = menu_button.get_popup()
 		
@@ -70,3 +70,14 @@ func add_item(item: InventoryItem):
 		# Set the popup menu equip text
 		popup_menu.set_item_text(0, "Equip as " + slot_placement_name)
 		
+	# Set the slot as occupied, disable menu button
+	empty = false
+	menu_button.disabled = false
+	# Set correct icon and name
+	icon.texture = item.texture
+	name_label.text = item.name
+	
+	# If there is more than one time, show the amount of it
+	if item.amount > 1:
+		amount_label.text = str(item.amount)
+	
