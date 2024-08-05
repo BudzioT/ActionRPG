@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://yyyh1oaw5nq7"]
+
+[ext_resource type="Script" path="res://Scripts/Objects/inventory_ui.gd" id="1_7biqt"]
+[ext_resource type="Texture2D" uid="uid://blrww8j07t5os" path="res://Assets/Graphics/Ui/Dialog/DialogBoxFaceset.png" id="2_sed4j"]
+
+[node name="InventoryUI" type="CanvasLayer"]
+script = ExtResource("1_7biqt")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2, 0.2, 0.2, 0.937255)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer"]
+layout_mode = 2
+texture = ExtResource("2_sed4j")
+region_rect = Rect2(49.1554, 12.0578, 247.897, 44.9628)
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6

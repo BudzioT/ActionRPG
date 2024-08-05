@@ -23,6 +23,7 @@ var selected: bool = false
 @onready var amount_label: Label = $Background/AmountLabel
 @onready var price_label: Label = $PriceLabel
 
+@onready var menu_button: MenuButton = $Background/Menu
 @onready var button: Button = $Background/Button
 
 # Place to put the item in
@@ -40,6 +41,17 @@ func _ready() -> void:
 	if label != null:
 		name_label.text = label
 		
-	# If user pressed a single time, hide the clickable area
-	button.disabled = single_click
+	# Handle user opening and closing the menu
+	menu_button.disabled = single_click
+	button.disabled = !single_click
+	button.visible = single_click
 	
+	# Get the popup menu
+	var popup_menu = menu_button.get_popup()
+	popup_menu.id_pressed.connect(_popup_menu_item_pressed)
+	
+
+"""----------------------- USER-DEFINED FUNCTIONS -----------------------"""
+func _popup_menu_item_pressed(id: int):
+	"""Handle player pressing the menu"""
+	print_debug(id)
