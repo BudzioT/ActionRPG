@@ -25,5 +25,9 @@ func _physics_process(delta: float) -> void:
 	# Otherwise deccelerate slowly
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, deceleration * delta)
+
+	# Animate the player
+	$Sprite.animate(velocity)
 		
+	# Move with current velocity
 	move_and_slide()

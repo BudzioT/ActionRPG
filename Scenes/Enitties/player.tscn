@@ -1,8 +1,8 @@
 [gd_scene load_steps=26 format=3 uid="uid://d1e6vq3klftou"]
 
-[ext_resource type="Script" path="res://Scenes/Enitties/player.gd" id="1_7b0rh"]
+[ext_resource type="Script" path="res://Scripts/Entities/player.gd" id="1_7b0rh"]
 [ext_resource type="Texture2D" uid="uid://cgg24qsmsiwer" path="res://Assets/Graphics/Actor/Characters/Princess/SpriteSheet.png" id="1_xxm55"]
-[ext_resource type="Script" path="res://Scenes/Enitties/PlayerSprite.gd" id="3_booqu"]
+[ext_resource type="Script" path="res://Scripts/Entities/PlayerSprite.gd" id="3_booqu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_afypf"]
 atlas = ExtResource("1_xxm55")
@@ -196,9 +196,7 @@ script = ExtResource("1_7b0rh")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_pl1bo")
-animation = &"Run_Right"
-frame = 1
-frame_progress = 0.990619
+animation = &"Idle_Back"
 script = ExtResource("3_booqu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
