@@ -24,7 +24,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 item_count = 2
-popup/item_0/text = "Equipt"
+popup/item_0/text = "Equip"
 popup/item_1/text = "Drop"
 popup/item_1/id = 1
 
@@ -61,7 +61,6 @@ offset_top = -23.0
 offset_right = 20.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "1"
 label_settings = SubResource("LabelSettings_sd7gr")
 horizontal_alignment = 2
 

@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://yyyh1oaw5nq7"]
+[gd_scene load_steps=5 format=3 uid="uid://yyyh1oaw5nq7"]
 
 [ext_resource type="Script" path="res://Scripts/Objects/inventory_ui.gd" id="1_7biqt"]
 [ext_resource type="Texture2D" uid="uid://blrww8j07t5os" path="res://Assets/Graphics/Ui/Dialog/DialogBoxFaceset.png" id="2_sed4j"]
+[ext_resource type="FontFile" uid="uid://b73kvp8n6mpo1" path="res://Assets/Graphics/Ui/Font/NormalFont.ttf" id="3_hq7ur"]
+
+[sub_resource type="Theme" id="Theme_k5kt6"]
+default_font = ExtResource("3_hq7ur")
 
 [node name="InventoryUI" type="CanvasLayer"]
 script = ExtResource("1_7biqt")
@@ -14,19 +18,52 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.2, 0.2, 0.2, 0.937255)
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="BackgrounContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/margin_left = 64
 theme_override_constants/margin_top = 64
 theme_override_constants/margin_right = 64
 theme_override_constants/margin_bottom = 64
 
-[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer"]
+[node name="Background" type="NinePatchRect" parent="BackgrounContainer"]
 layout_mode = 2
 texture = ExtResource("2_sed4j")
-region_rect = Rect2(49.1554, 12.0578, 247.897, 44.9628)
+region_rect = Rect2(48.1753, 11.6308, 248.877, 44.409)
 patch_margin_left = 6
 patch_margin_top = 6
 patch_margin_right = 6
 patch_margin_bottom = 6
+
+[node name="InventoryContainer" type="MarginContainer" parent="BackgrounContainer/Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="InventoryArea" type="VBoxContainer" parent="BackgrounContainer/Background/InventoryContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="BackgrounContainer/Background/InventoryContainer/InventoryArea"]
+layout_mode = 2
+theme = SubResource("Theme_k5kt6")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 35
+text = "Inventory"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ItemContainer" type="GridContainer" parent="BackgrounContainer/Background/InventoryContainer/InventoryArea"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+columns = 3

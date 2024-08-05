@@ -52,6 +52,6 @@ func _ready() -> void:
 	
 
 """----------------------- USER-DEFINED FUNCTIONS -----------------------"""
-func _popup_menu_item_pressed(id: int):
+func _popup_menu_item_pressed(id: int) -> void:
 	"""Handle player pressing the menu"""
 	print_debug(id)

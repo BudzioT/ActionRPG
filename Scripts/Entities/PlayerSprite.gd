@@ -3,14 +3,14 @@ extends AnimatedSprite2D
 
 
 """----------------------- USER-DEFINED FUNCTIONS -----------------------"""
-func animate(velocity: Vector2):
+func animate(velocity: Vector2) -> void:
 	# If player's moving, play movement animation, otherwise play idle one
 	if velocity != Vector2.ZERO:
 		_animate_movement(velocity)
 	else:
 		_animate_idle()
 
-func _animate_movement(velocity: Vector2):
+func _animate_movement(velocity: Vector2) -> void:
 	"""Animate the player"""
 	# If player's moving to the left, animate left movement
 	if velocity.x < 0:
@@ -26,7 +26,7 @@ func _animate_movement(velocity: Vector2):
 	elif velocity.y > 0:
 		play("Run_Front")
 		
-func _animate_idle():
+func _animate_idle() -> void:
 	"""Animate player idle state"""
 	# Change run into idle animation
 	var new_animation = animation.replace("Run", "Idle")

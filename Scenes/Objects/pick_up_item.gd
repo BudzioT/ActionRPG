@@ -6,6 +6,7 @@ extends Area2D
 # Variables related to the overworld
 @export_category("Overworld")
 @export var inventory_item: InventoryItem
+@export var amount: int = 1
 
 @onready var sprite: Sprite2D = $Sprite
 @onready var collision: CollisionShape2D = $Collision

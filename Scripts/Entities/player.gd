@@ -7,7 +7,9 @@ extends CharacterBody2D
 @export var speed: float = 100.0
 @export var deceleration: float = 300.0
 
+# References to nodes
 @onready var sprite: PlayerSprite = $Sprite
+@onready var inventory: Inventory = $Inventory
 
 
 """----------------------- BUILT-IN FUNCTIONS -----------------------"""
@@ -37,5 +39,7 @@ func _item_area_entered(area: Area2D) -> void:
 	"""Handle player colliding with an item"""
 	# If item can be picked up, pick it
 	if area is PickUpItem:
+		# Add the item to inventory
+		inventory.add_item(area.inventory_item, area.amount)
 		# Remove the item
 		area.queue_free()
