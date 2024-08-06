@@ -1,4 +1,4 @@
-class_name Spells
+class_name SpellData
 extends Resource
 
 

@@ -17,8 +17,13 @@ extends Node
 # Amount of occupied inventory slots
 var occupied_slots: int = 0
 
+# Currently selected spell
+var spell_index = -1
+
 # Pickup item scene
 const PICKUP_ITEM_SCENE: PackedScene = preload("res://Scenes/Objects/pick_up_item.tscn")
+
+
 
 
 """----------------------- BUILT-IN FUNCTIONS -----------------------"""
@@ -193,3 +198,11 @@ func _drop_item_ground(index: int):
 		
 	# Delete this item from the list
 	items[index] = null
+	
+func _spell_slot_clicked(index: int):
+	"""React on clicking the spell slot"""
+	# Set the spell index
+	spell_index = index
+	
+	# Set the selected spell
+	inventory_ui.set_spell_slot(spell_index)

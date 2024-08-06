@@ -5,6 +5,7 @@ extends VBoxContainer
 """----------------------- SIGNALS -----------------------"""
 signal equip_item(type: String)
 signal drop_item
+signal slot_clicked
 
 """----------------------- GLOBAL VARIABLES -----------------------"""
 # Inventory flags
@@ -53,6 +54,11 @@ func _ready() -> void:
 	var popup_menu = menu_button.get_popup()
 	popup_menu.id_pressed.connect(_popup_menu_item_pressed)
 	
+func _button_pressed() -> void:
+	"""Handle clicking on the slot"""
+	# Emit a signal telling that slot has been clicked
+	slot_clicked.emit()
+	
 
 """----------------------- USER-DEFINED FUNCTIONS -----------------------"""
 func _popup_menu_item_pressed(id: int) -> void:
@@ -96,4 +102,3 @@ func add_item(item: InventoryItem):
 	# If there is more than one time, show the amount of it
 	if item.amount > 1:
 		amount_label.text = str(item.amount)
-	

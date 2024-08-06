@@ -5,12 +5,19 @@ extends CanvasLayer
 """----------------------- SIGNALS -----------------------"""
 signal equip_item(index: int, slot_type: String)
 signal drop_item(index: int)
+signal spell_slot_clicked(index: int)
 
 
 """----------------------- GLOBAL VARIABLES -----------------------"""
 # Get reference to the container for items
 @onready var item_container: GridContainer\
  	= $BackgrounContainer/Background/InventoryContainer/InventoryArea/ItemContainer
+
+@onready var spell_slots: Array[InventorySlot] = [
+	$BackgrounContainer/Background/InventoryContainer/InventoryArea/SpellUI/SpellContainer/Plant,
+	$BackgrounContainer/Background/InventoryContainer/InventoryArea/SpellUI/SpellContainer/Flame,
+	$BackgrounContainer/Background/InventoryContainer/InventoryArea/SpellUI/SpellContainer/Ice
+]
 
 var INVENTORY_SLOT_SCENE: PackedScene \
 	= preload("res://Scenes/Ui/inventory_slot.tscn")	
@@ -38,6 +45,11 @@ func _ready() -> void:
 		# Also connect sygnal to drop an item
 		inventory_slot.drop_item.connect(func():\
 			drop_item.emit(cell))
+			
+	# Go through each spell slot and initialize it
+	for slot in spell_slots.size():
+		# Connect the right signal to make clicking the spell slot work
+		spell_slots[slot].slot_clicked.connect(handle_spell_slot_clicked.bind(slot))
 
 """----------------------- USER-DEFINED FUNCTIONS -----------------------"""
 func toggle() -> void:
@@ -80,3 +92,8 @@ func clear_slot(index: int):
 	item_container.add_child(empty_slot)
 	# Move it to the old position
 	item_container.move_child(empty_slot, index)
+	
+func handle_spell_slot_clicked(index: int):
+	"""Handle clicking the slot"""
+	# Emit a proper signal
+	spell_slot_clicked.emit()

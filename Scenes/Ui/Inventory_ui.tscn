@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://yyyh1oaw5nq7"]
+[gd_scene load_steps=8 format=3 uid="uid://yyyh1oaw5nq7"]
 
 [ext_resource type="Script" path="res://Scripts/UI/inventory_ui.gd" id="1_7biqt"]
 [ext_resource type="Texture2D" uid="uid://blrww8j07t5os" path="res://Assets/Graphics/Ui/Dialog/DialogBoxFaceset.png" id="2_sed4j"]
 [ext_resource type="Theme" uid="uid://cksxks7axtpf0" path="res://Resources/Ui/fontStyle.tres" id="3_ycag6"]
+[ext_resource type="PackedScene" uid="uid://70e6fp4tq1" path="res://Scenes/Ui/inventory_slot.tscn" id="4_6coup"]
+[ext_resource type="Texture2D" uid="uid://c1ytmri8x8ew2" path="res://Assets/Graphics/Items/Scroll/ScrollPlant.png" id="5_yg45q"]
+[ext_resource type="Texture2D" uid="uid://oif5cjbldhn1" path="res://Assets/Graphics/Items/Scroll/ScrollFire.png" id="6_6cjeu"]
+[ext_resource type="Texture2D" uid="uid://dxa52205tp1k7" path="res://Assets/Graphics/Items/Scroll/ScrollIce.png" id="7_wof3h"]
 
 [node name="InventoryUI" type="CanvasLayer"]
 script = ExtResource("1_7biqt")
@@ -50,7 +54,7 @@ theme_override_constants/margin_bottom = 32
 [node name="InventoryArea" type="VBoxContainer" parent="BackgrounContainer/Background/InventoryContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="BackgrounContainer/Background/InventoryContainer/InventoryArea"]
+[node name="Title" type="Label" parent="BackgrounContainer/Background/InventoryContainer/InventoryArea"]
 layout_mode = 2
 theme = ExtResource("3_ycag6")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -64,3 +68,38 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 columns = 3
+
+[node name="SpellUI" type="VBoxContainer" parent="BackgrounContainer/Background/InventoryContainer/InventoryArea"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="BackgrounContainer/Background/InventoryContainer/InventoryArea/SpellUI"]
+layout_mode = 2
+theme = ExtResource("3_ycag6")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Spells"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpellContainer" type="HBoxContainer" parent="BackgrounContainer/Background/InventoryContainer/InventoryArea/SpellUI"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Plant" parent="BackgrounContainer/Background/InventoryContainer/InventoryArea/SpellUI/SpellContainer" instance=ExtResource("4_6coup")]
+layout_mode = 2
+single_click = true
+texture = ExtResource("5_yg45q")
+label = "Plant"
+
+[node name="Flame" parent="BackgrounContainer/Background/InventoryContainer/InventoryArea/SpellUI/SpellContainer" instance=ExtResource("4_6coup")]
+layout_mode = 2
+single_click = true
+texture = ExtResource("6_6cjeu")
+label = "Flame"
+
+[node name="Ice" parent="BackgrounContainer/Background/InventoryContainer/InventoryArea/SpellUI/SpellContainer" instance=ExtResource("4_6coup")]
+layout_mode = 2
+single_click = true
+texture = ExtResource("7_wof3h")
+label = "Ice"
