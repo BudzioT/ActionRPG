@@ -1,8 +1,20 @@
-[gd_scene load_steps=7 format=3 uid="uid://70e6fp4tq1"]
+[gd_scene load_steps=9 format=3 uid="uid://70e6fp4tq1"]
 
 [ext_resource type="Script" path="res://Scripts/UI/inventory_slot.gd" id="1_2si73"]
 [ext_resource type="Texture2D" uid="uid://d4iopmfamhbth" path="res://Assets/Graphics/Ui/Dialog/FacesetBox.png" id="1_dmha3"]
 [ext_resource type="Theme" uid="uid://cksxks7axtpf0" path="res://Resources/Ui/fontStyle.tres" id="3_tgby1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nga4d"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.941176, 1, 0, 1)
+
+[sub_resource type="Theme" id="Theme_f2f8w"]
+selected/base_type = &"Button"
+selected/styles/normal = SubResource("StyleBoxFlat_nga4d")
 
 [sub_resource type="LabelSettings" id="LabelSettings_sd7gr"]
 font_size = 14
@@ -54,6 +66,7 @@ custom_minimum_size = Vector2(60, 60)
 layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
+theme = SubResource("Theme_f2f8w")
 
 [node name="AmountLabel" type="Label" parent="Background"]
 custom_minimum_size = Vector2(45, 0)

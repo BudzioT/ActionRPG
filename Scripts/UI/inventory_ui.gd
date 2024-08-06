@@ -49,7 +49,7 @@ func _ready() -> void:
 	# Go through each spell slot and initialize it
 	for slot in spell_slots.size():
 		# Connect the right signal to make clicking the spell slot work
-		spell_slots[slot].slot_clicked.connect(handle_spell_slot_clicked.bind(slot))
+		spell_slots[slot].slot_clicked.connect(on_spell_slot_clicked.bind(slot))
 
 """----------------------- USER-DEFINED FUNCTIONS -----------------------"""
 func toggle() -> void:
@@ -93,7 +93,13 @@ func clear_slot(index: int):
 	# Move it to the old position
 	item_container.move_child(empty_slot, index)
 	
-func handle_spell_slot_clicked(index: int):
+func on_spell_slot_clicked(index: int):
 	"""Handle clicking the slot"""
 	# Emit a proper signal
-	spell_slot_clicked.emit()
+	spell_slot_clicked.emit(index)
+	
+func set_spell_slot(index: int):
+	"""Set the selected spell slot"""
+	# Go through each of slots and mark it as selected if needed
+	for slot in spell_slots.size():
+		spell_slots[index].toggle_button_selected(index == slot)

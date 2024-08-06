@@ -34,6 +34,9 @@ func _ready() -> void:
 	
 	# Also connect a singal to drop an item
 	inventory_ui.drop_item.connect(_item_dropped)
+	
+	# Connect a function to select a spell slot
+	inventory_ui.spell_slot_clicked.connect(handle_spell_slot_clicked)
 
 func _input(_event: InputEvent) -> void:
 	"""Handle input events"""
@@ -199,7 +202,7 @@ func _drop_item_ground(index: int):
 	# Delete this item from the list
 	items[index] = null
 	
-func _spell_slot_clicked(index: int):
+func handle_spell_slot_clicked(index: int):
 	"""React on clicking the spell slot"""
 	# Set the spell index
 	spell_index = index
