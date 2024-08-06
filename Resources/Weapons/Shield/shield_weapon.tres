@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="WeaponItem" load_steps=5 format=3 uid="uid://b6d2licyw2blk"]
+
+[ext_resource type="Shape2D" uid="uid://brgy6y2skvf7r" path="res://Resources/Weapons/Shield/shield_collision.tres" id="1_2c475"]
+[ext_resource type="Script" path="res://Scripts/Objects/weapon_item.gd" id="1_ubung"]
+[ext_resource type="Texture2D" uid="uid://cqmsrcpndwry0" path="res://Assets/Graphics/Items/Weapons/Shield/shield_side.png" id="2_u3ixv"]
+[ext_resource type="Texture2D" uid="uid://ciu7jgubd6jdn" path="res://Assets/Graphics/Items/Weapons/Shield/Shield.png" id="3_tmfh4"]
+
+[resource]
+script = ExtResource("1_ubung")
+collision = ExtResource("1_2c475")
+attack_type = "Melee"
+texture = ExtResource("3_tmfh4")
+side_texture = ExtResource("2_u3ixv")
+left_attachment = Vector2(-9, 4)
+right_attachment = Vector2(9, 4)
+front_attachment = Vector2(-2, 8)
+back_attachment = Vector2(-3, -9)
+left_depth_index = 0
+right_depth_index = 0
+front_depth_index = 0
+back_depth_index = 0
+left_rotation = 180
+right_rotation = 0
+front_rotation = 0
+back_rotation = 270

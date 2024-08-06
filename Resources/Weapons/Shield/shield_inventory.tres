@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=5 format=3 uid="uid://dy7yggsijd1mj"]
+
+[ext_resource type="Shape2D" uid="uid://brgy6y2skvf7r" path="res://Resources/Weapons/Shield/shield_collision.tres" id="1_0r0o1"]
+[ext_resource type="Script" path="res://Scripts/Objects/inventory_item.gd" id="1_q6mnv"]
+[ext_resource type="Texture2D" uid="uid://ciu7jgubd6jdn" path="res://Assets/Graphics/Items/Weapons/Shield/Shield.png" id="3_qykt5"]
+[ext_resource type="Resource" uid="uid://b6d2licyw2blk" path="res://Resources/Weapons/Shield/shield_weapon.tres" id="4_72l15"]
+
+[resource]
+script = ExtResource("1_q6mnv")
+placement = "Left_Weapon"
+max_amount = 1
+price = 60
+name = "Shield"
+weapon_item = ExtResource("4_72l15")
+collision_shape = ExtResource("1_0r0o1")
+texture = ExtResource("3_qykt5")

@@ -4,6 +4,7 @@ extends CanvasLayer
 
 """----------------------- SIGNALS -----------------------"""
 signal equip_item(index: int, slot_type: String)
+signal drop_item(index: int)
 
 
 """----------------------- GLOBAL VARIABLES -----------------------"""
@@ -31,9 +32,12 @@ func _ready() -> void:
 		var inventory_slot = INVENTORY_SLOT_SCENE.instantiate()
 		item_container.add_child(inventory_slot)
 		
-		# Connect the right singal to equipt an item
+		# Connect the right singal to equip an item
 		inventory_slot.equip_item.connect(func(slot_type: String): \
 			equip_item.emit(cell, slot_type))
+		# Also connect sygnal to drop an item
+		inventory_slot.drop_item.connect(func():\
+			drop_item.emit(cell))
 
 """----------------------- USER-DEFINED FUNCTIONS -----------------------"""
 func toggle() -> void:

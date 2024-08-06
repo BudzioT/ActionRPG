@@ -13,12 +13,18 @@ extends Node
 # Currently existing items in the inventory
 @export var items: Array[InventoryItem] = []
 
+# Amount of occupied inventory slots
+var occupied_slots: int = 0
+
 
 """----------------------- BUILT-IN FUNCTIONS -----------------------"""
 func _ready() -> void:
 	"""Prepare the inventory"""
 	# Connect the right signal to equip an item
 	inventory_ui.equip_item.connect(_item_equipped)
+	
+	# Also connect a singal to drop an item
+	inventory_ui.drop_item.connect(_item_dropped)
 
 func _input(_event: InputEvent) -> void:
 	"""Handle input events"""
@@ -38,6 +44,9 @@ func add_item(item: InventoryItem, amount: int) -> void:
 		items.append(item)
 		# Update the inventory UI
 		inventory_ui.add_item(item)
+		
+		# Increase occupied slots count
+		occupied_slots += 1
 		
 func add_multiple_inventory_item(item: InventoryItem, amount: int) -> void:
 	"""Add an item to the inventory if its stackable"""
@@ -90,7 +99,10 @@ func add_multiple_inventory_item(item: InventoryItem, amount: int) -> void:
 		# Update the inventory UI
 		inventory_ui.add_item(item)
 		
-func _item_equipped(index: int, slot_type: String):
+		# Update the amount of occupied slots
+		occupied_slots += 1
+		
+func _item_equipped(index: int, slot_type: String) -> void:
 	"""Equip item with the given index"""
 	# Get the right item
 	var item = items[index]
@@ -99,3 +111,18 @@ func _item_equipped(index: int, slot_type: String):
 	main_ui.equip_item(item, slot_type)
 	# Set it as the weapon which player's currently attacking with
 	combat.set_weapon(item.weapon_item, slot_type)
+	
+func _item_dropped(index: int):
+	"""Drop an item with the given index"""
+	# Clear the given slot
+	_clear_slot(index)
+	# Drop this item onto the ground
+	#_drop_item_ground(index)
+	
+func _clear_slot(index: int):
+	"""Clear an inventory slot with the given index"""
+	# Decrease occupied slot count
+	occupied_slots -= 1
+	
+	# Clear the slot at UI level
+	inventory_ui.clear_slot(index)

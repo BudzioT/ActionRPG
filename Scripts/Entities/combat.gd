@@ -52,6 +52,12 @@ func _input(_event: InputEvent) -> void:
 				left_weapon_sprite.rotation_degrees = weapon_data.get("Rotation")
 				left_weapon_sprite.z_index = weapon_data.get("Depth")
 				
+				# Use a side texture if needed
+				if left_weapon.side_texture and ["Back", "Left", "Right"].has(attack_direction):
+					left_weapon_sprite.texture = left_weapon.side_texture
+				else:
+					left_weapon_sprite.texture = left_weapon.texture
+				
 				# Show the weapon
 				left_weapon_sprite.show()
 			
@@ -66,6 +72,12 @@ func _input(_event: InputEvent) -> void:
 			if right_weapon:
 				# Get attack direction
 				var attack_direction = player_sprite.attack_direction
+				
+				# If this weapon has a side texture, use it in the proper place
+				if right_weapon.side_texture and ["Back", "Left", "Right"].has(attack_direction):
+					right_weapon_sprite.texture = right_weapon.side_texture
+				else:
+					right_weapon_sprite.texture = right_weapon.texture
 				
 				# Get weapon's data
 				var weapon_data = right_weapon.get_direction_data(attack_direction)

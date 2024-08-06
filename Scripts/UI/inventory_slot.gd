@@ -4,6 +4,7 @@ extends VBoxContainer
 
 """----------------------- SIGNALS -----------------------"""
 signal equip_item(type: String)
+signal drop_item
 
 """----------------------- GLOBAL VARIABLES -----------------------"""
 # Inventory flags
@@ -60,7 +61,12 @@ func _popup_menu_item_pressed(id: int) -> void:
 	
 	# If player pressed drop, drop the item
 	if pressed_item == "Drop":
-		pass
+		# Emit the proper signal
+		drop_item.emit()
+		
+		# Disable menu button
+		menu_button.disabled = true
+		
 	# Otherwise if player choose to equipt it, do it if it's possible
 	elif pressed_item.contains("Equip") and slot_type != "Normal":
 		equip_item.emit(slot_type)
