@@ -6,6 +6,7 @@ extends Node
 # References to nodes
 @onready var inventory_ui: InventoryUi = $"../InventoryUI"
 @onready var main_ui: MainUi = $"../MainUI"
+@onready var combat: Combat = $"../Combat"
 
 # Inventory variables
 @export_category("Inventory")
@@ -94,5 +95,7 @@ func _item_equipped(index: int, slot_type: String):
 	# Get the right item
 	var item = items[index]
 	
-	# Equip it in main UI too
+	# Equip it in main UI
 	main_ui.equip_item(item, slot_type)
+	# Set it as the weapon which player's currently attacking with
+	combat.set_weapon(item.weapon_item, slot_type)

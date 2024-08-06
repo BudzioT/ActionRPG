@@ -2,6 +2,10 @@ class_name PlayerSprite
 extends AnimatedSprite2D
 
 
+"""----------------------- SIGNALS -----------------------"""
+signal attack_animation_finished
+
+
 """----------------------- GLOBAL VARIABLES -----------------------"""
 # Direction vectors
 const DIRECTION_VECTORS = {
@@ -56,3 +60,19 @@ func animate_attack() -> void:
 	"""Animate player's attacks"""
 	attack_direction = animation.split('_')[1]
 	play(ANIMATION_ATTACK_DIRECTIONS[attack_direction])
+
+
+func _animation_finished() -> void:
+	"""Set the correct animation, after finishing current one"""
+	# If attack has finished, go back to idle
+	if ANIMATION_ATTACK_DIRECTIONS.values().has(animation):
+		# Get the animation name and its direction
+		var animation_name: String = String(animation)
+		var direction = ANIMATION_ATTACK_DIRECTIONS.find_key(animation_name)
+		
+		# Play the idle animation
+		play("Idle_" + direction)
+		attack_direction = ""
+		
+		# Emit signal, that the attack animation is finished
+		attack_animation_finished.emit()
