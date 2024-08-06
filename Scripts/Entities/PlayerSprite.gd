@@ -25,6 +25,8 @@ const ANIMATION_ATTACK_DIRECTIONS = {
 
 # Direction of attacks
 var attack_direction = null
+# Direction of item after dropping it
+var drop_direction = Vector2.DOWN
 
 """----------------------- USER-DEFINED FUNCTIONS -----------------------"""
 func animate(velocity: Vector2) -> void:
@@ -41,16 +43,21 @@ func _animate_movement(velocity: Vector2) -> void:
 	# If player's moving to the left, animate left movement
 	if velocity.x < 0:
 		play("Run_Left")
+		# Set the proper item drop direction
+		drop_direction = Vector2.LEFT
 	# Movement to the right
 	elif velocity.x > 0:
 		play("Run_Right")
+		drop_direction = Vector2.RIGHT
 		
 	# Movement up
 	elif velocity.y < 0:
 		play("Run_Back")
+		drop_direction = Vector2.UP
 	# Movement down
 	elif velocity.y > 0:
 		play("Run_Front")
+		drop_direction = Vector2.DOWN
 		
 func _animate_idle() -> void:
 	"""Animate player idle state"""

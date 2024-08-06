@@ -59,3 +59,24 @@ func update_amount(amount: int, slot_index: int) -> void:
 		# Get slot at the given index and update its item amount
 		var slot: InventorySlot = item_container.get_child(slot_index)
 		slot.amount_label.text = str(amount)
+		
+func clear_slot(index: int):
+	"""Clear the slot at the given index"""
+	# Create an empty slot
+	var empty_slot: InventorySlot = INVENTORY_SLOT_SCENE.instantiate()
+	# Toggle off the menu
+	toggle()
+	
+	# Reconnect the signals
+	empty_slot.equip_item.connect(func(slot_type: String): \
+		equip_item.emit(index, slot_type))
+	empty_slot.drop_item.connect(func():\
+		drop_item.emit(index))
+		
+	# Get the old slot that was at this index
+	var old_slot = item_container.get_child(index)
+	# Remove it, and insert the empty one
+	item_container.remove_child(old_slot)
+	item_container.add_child(empty_slot)
+	# Move it to the old position
+	item_container.move_child(empty_slot, index)

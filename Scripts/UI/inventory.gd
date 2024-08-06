@@ -7,6 +7,7 @@ extends Node
 @onready var inventory_ui: InventoryUi = $"../InventoryUI"
 @onready var main_ui: MainUi = $"../MainUI"
 @onready var combat: Combat = $"../Combat"
+@onready var sprite: PlayerSprite = $"../Sprite"
 
 # Inventory variables
 @export_category("Inventory")
@@ -15,6 +16,9 @@ extends Node
 
 # Amount of occupied inventory slots
 var occupied_slots: int = 0
+
+# Pickup item scene
+const PICKUP_ITEM_SCENE: PackedScene = preload("res://Scenes/Objects/pick_up_item.tscn")
 
 
 """----------------------- BUILT-IN FUNCTIONS -----------------------"""
@@ -117,7 +121,7 @@ func _item_dropped(index: int):
 	# Clear the given slot
 	_clear_slot(index)
 	# Drop this item onto the ground
-	#_drop_item_ground(index)
+	_drop_item_ground(index)
 	
 func _clear_slot(index: int):
 	"""Clear an inventory slot with the given index"""
@@ -126,3 +130,31 @@ func _clear_slot(index: int):
 	
 	# Clear the slot at UI level
 	inventory_ui.clear_slot(index)
+	
+func _drop_item_ground(index: int):
+	"""Drop item with the given index, onto ground"""
+	# Get the dropped item
+	var item_to_drop = items[index]
+	
+	# Instantiate a pickup item scene
+	var item_dropped = PICKUP_ITEM_SCENE.instantiate() as PickUpItem
+	
+	# Set correct data of the dropped item
+	item_dropped.inventory_item = item_to_drop
+	item_dropped.amount = item_to_drop.amount
+	
+	# Add item into the scene
+	get_tree().root.get_node("Main/Items").add_child(item_dropped)
+	
+	# Disable items collisions, place it onto the player's position at first
+	item_dropped.disable_collisions()
+	item_dropped.global_position = get_parent().global_position
+	
+	# Get direction of dropping item
+	var drop_direction = sprite.drop_direction
+	# If item is dropped horizontally, randomize its vertical direction
+	if drop_direction.y == 0:
+		drop_direction.y = randf_range(-1, 1)
+	# Otherwise randomize the horizontal direction
+	else:
+		drop_direction.x = randfn(-1, 1)

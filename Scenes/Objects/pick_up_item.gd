@@ -18,3 +18,13 @@ func _ready() -> void:
 	# Set the correct texture and collisions
 	sprite.texture = inventory_item.texture
 	collision.shape = inventory_item.collision_shape
+	
+
+"""----------------------- USER-DEFINED FUNCTIONS -----------------------"""
+func disable_collisions():
+	"""Disable item collisions"""
+	collision.disabled = true
+	
+func enable_collisions():
+	"""Enable item collisions"""
+	collision.disabled = false
