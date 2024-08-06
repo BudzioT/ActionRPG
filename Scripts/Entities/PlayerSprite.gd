@@ -24,15 +24,17 @@ const ANIMATION_ATTACK_DIRECTIONS = {
 }
 
 # Direction of attacks
-var attack_direction: String
+var attack_direction = null
 
 """----------------------- USER-DEFINED FUNCTIONS -----------------------"""
 func animate(velocity: Vector2) -> void:
-	# If player's moving, play movement animation, otherwise play idle one
-	if velocity != Vector2.ZERO:
-		_animate_movement(velocity)
-	else:
-		_animate_idle()
+	# If player isn't currently attacking, animate him
+	if not ANIMATION_ATTACK_DIRECTIONS.values().has(animation):
+		# If player's moving, play movement animation, otherwise play idle one
+		if velocity != Vector2.ZERO:
+			_animate_movement(velocity)
+		else:
+			_animate_idle()
 
 func _animate_movement(velocity: Vector2) -> void:
 	"""Animate the player"""
@@ -72,7 +74,7 @@ func _animation_finished() -> void:
 		
 		# Play the idle animation
 		play("Idle_" + direction)
-		attack_direction = ""
+		attack_direction = null
 		
 		# Emit signal, that the attack animation is finished
 		attack_animation_finished.emit()
