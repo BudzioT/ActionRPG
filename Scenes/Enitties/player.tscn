@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://d1e6vq3klftou"]
+[gd_scene load_steps=34 format=3 uid="uid://d1e6vq3klftou"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/player.gd" id="1_7b0rh"]
 [ext_resource type="Texture2D" uid="uid://cgg24qsmsiwer" path="res://Assets/Graphics/Actor/Characters/Princess/SpriteSheet.png" id="1_xxm55"]
@@ -7,6 +7,23 @@
 [ext_resource type="PackedScene" uid="uid://yyyh1oaw5nq7" path="res://Scenes/Ui/Inventory_ui.tscn" id="5_5c0iy"]
 [ext_resource type="Script" path="res://Scripts/UI/inventory.gd" id="6_rie6h"]
 [ext_resource type="PackedScene" uid="uid://c2oxax80p2shi" path="res://Scenes/Ui/main_ui.tscn" id="7_tpg1v"]
+[ext_resource type="Script" path="res://Scripts/Entities/combat.gd" id="8_0f6py"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_px7q1"]
+atlas = ExtResource("1_xxm55")
+region = Rect2(16, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aal6r"]
+atlas = ExtResource("1_xxm55")
+region = Rect2(0, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qad3x"]
+atlas = ExtResource("1_xxm55")
+region = Rect2(32, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vr7wi"]
+atlas = ExtResource("1_xxm55")
+region = Rect2(48, 64, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_afypf"]
 atlas = ExtResource("1_xxm55")
@@ -90,6 +107,38 @@ region = Rect2(48, 48, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pl1bo"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_px7q1")
+}],
+"loop": false,
+"name": &"Attack_Back",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aal6r")
+}],
+"loop": false,
+"name": &"Attack_Front",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qad3x")
+}],
+"loop": false,
+"name": &"Attack_Left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vr7wi")
+}],
+"loop": false,
+"name": &"Attack_Right",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_afypf")
@@ -197,7 +246,7 @@ script = ExtResource("1_7b0rh")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_pl1bo")
-animation = &"Idle_Front"
+animation = &"Attack_Back"
 script = ExtResource("3_booqu")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
@@ -223,5 +272,22 @@ visible = false
 script = ExtResource("6_rie6h")
 
 [node name="Combat" type="Node2D" parent="."]
+script = ExtResource("8_0f6py")
+
+[node name="RightWeaponSprite" type="Sprite2D" parent="Combat"]
+
+[node name="AttackArea" type="Area2D" parent="Combat/RightWeaponSprite"]
+collision_layer = 16
+collision_mask = 32
+
+[node name="Collision" type="CollisionShape2D" parent="Combat/RightWeaponSprite/AttackArea"]
+
+[node name="LeftWeaponSprite" type="Sprite2D" parent="Combat"]
+
+[node name="AttackArea" type="Area2D" parent="Combat/LeftWeaponSprite"]
+collision_layer = 16
+collision_mask = 32
+
+[node name="Collision" type="CollisionShape2D" parent="Combat/LeftWeaponSprite/AttackArea"]
 
 [connection signal="area_entered" from="ItemArea" to="." method="_item_area_entered"]
