@@ -1,6 +1,10 @@
-[gd_scene format=3 uid="uid://c2oxax80p2shi"]
+[gd_scene load_steps=3 format=3 uid="uid://c2oxax80p2shi"]
+
+[ext_resource type="Script" path="res://Scripts/UI/main_ui.gd" id="1_3k7se"]
+[ext_resource type="PackedScene" uid="uid://d3kw01beky43i" path="res://Scenes/Ui/equipment_slot.tscn" id="1_xnuqj"]
 
 [node name="MainUI" type="CanvasLayer"]
+script = ExtResource("1_3k7se")
 
 [node name="MainUIContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -18,7 +22,23 @@ layout_mode = 2
 size_flags_horizontal = 0
 show_percentage = false
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MainUIContainer"]
+[node name="SlotContainer" type="HBoxContainer" parent="MainUIContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
+
+[node name="RightHand" parent="MainUIContainer/SlotContainer" instance=ExtResource("1_xnuqj")]
+layout_mode = 2
+slot_name = "Right  H"
+
+[node name="LeftHand" parent="MainUIContainer/SlotContainer" instance=ExtResource("1_xnuqj")]
+layout_mode = 2
+slot_name = "Left  H"
+
+[node name="Spell" parent="MainUIContainer/SlotContainer" instance=ExtResource("1_xnuqj")]
+layout_mode = 2
+slot_name = "Spell"
+
+[node name="Potion" parent="MainUIContainer/SlotContainer" instance=ExtResource("1_xnuqj")]
+layout_mode = 2
+slot_name = "Potion"

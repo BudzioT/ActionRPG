@@ -32,7 +32,6 @@ offset_right = 20.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("3_j2utf")
-text = "1"
 horizontal_alignment = 2
 
 [node name="SlotContainer" type="CenterContainer" parent="Background"]
@@ -48,6 +47,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Icon" type="TextureRect" parent="Background/SlotContainer"]
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 expand_mode = 2
 stretch_mode = 5

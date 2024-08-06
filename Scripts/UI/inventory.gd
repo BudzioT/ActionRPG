@@ -3,7 +3,9 @@ extends Node
 
 
 """----------------------- GLOBAL VARIABLES -----------------------"""
+# References to nodes
 @onready var inventory_ui: InventoryUi = $"../InventoryUI"
+@onready var main_ui: MainUi = $"../MainUI"
 
 # Inventory variables
 @export_category("Inventory")
@@ -91,3 +93,6 @@ func _item_equipped(index: int, slot_type: String):
 	"""Equip item with the given index"""
 	# Get the right item
 	var item = items[index]
+	
+	# Equip it in main UI too
+	main_ui.equip_item(item, slot_type)
