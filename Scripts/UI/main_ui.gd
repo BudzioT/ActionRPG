@@ -20,4 +20,5 @@ extends CanvasLayer
 """----------------------- USER-DEFINED FUNCTIONS -----------------------"""
 func equip_item(item: InventoryItem, slot_type: String):
 	"""Equip given item to the proper slot type"""
-	slots_dictionary[slot_type].set_texture(item.texture)
+	if item:
+		slots_dictionary[slot_type].set_texture(item.texture)

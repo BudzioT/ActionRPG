@@ -45,7 +45,16 @@ func add_item(item: InventoryItem, amount: int) -> void:
 		add_multiple_inventory_item(item, amount)
 	# Otherwise just add it to the inventory
 	else:
-		items.append(item)
+		# Get index of a null slot
+		var null_index = items.find(null)
+		
+		# If there is one, add this item to it
+		if null_index > -1:
+			items[null_index] = item
+		# Otherwise add it to a new slot
+		else:
+			items.append(item)
+			
 		# Update the inventory UI
 		inventory_ui.add_item(item)
 		
@@ -110,11 +119,11 @@ func _item_equipped(index: int, slot_type: String) -> void:
 	"""Equip item with the given index"""
 	# Get the right item
 	var item = items[index]
-	
-	# Equip it in main UI
-	main_ui.equip_item(item, slot_type)
-	# Set it as the weapon which player's currently attacking with
-	combat.set_weapon(item.weapon_item, slot_type)
+	if item:
+		# Equip it in main UI
+		main_ui.equip_item(item, slot_type)
+		# Set it as the weapon which player's currently attacking with
+		combat.set_weapon(item.weapon_item, slot_type)
 	
 func _item_dropped(index: int):
 	"""Drop an item with the given index"""
@@ -144,7 +153,7 @@ func _drop_item_ground(index: int):
 	item_dropped.amount = item_to_drop.amount
 	
 	# Add item into the scene
-	get_tree().root.get_node("Main/Items").add_child(item_dropped)
+	get_tree().root.get_node("Level/Main/Items").add_child(item_dropped)
 	
 	# Disable items collisions, place it onto the player's position at first
 	item_dropped.disable_collisions()
@@ -158,3 +167,29 @@ func _drop_item_ground(index: int):
 	# Otherwise randomize the horizontal direction
 	else:
 		drop_direction.x = randfn(-1, 1)
+		
+	# Final position of the dropped item
+	var final_position = get_parent().global_position + Vector2(25, 25) * drop_direction
+	
+	# Tween to handle smooth, bouncy transition of item movement
+	var drop_tween = get_tree().create_tween()
+	drop_tween.set_trans(Tween.TRANS_BOUNCE)
+	# Make the item move from player's position into the final one smoothly
+	drop_tween.tween_property(item_dropped, "global_position", final_position, 0.4)
+	
+	# Make item collisions enabled again after it is at the final position
+	drop_tween.finished.connect(func(): item_dropped.enable_collisions())
+
+	# If this was the left weapon, unequip it
+	if combat.left_weapon == item_to_drop.weapon_item:
+		combat.left_weapon = null
+		# Update the UI part of it
+		main_ui.left_hand_slot.set_texture(null)
+		
+	# Do the same for the right weapon
+	if combat.right_weapon == item_to_drop.weapon_item:
+		combat.right_weapon = null
+		main_ui.right_hand_slot.set_texture(null)
+		
+	# Delete this item from the list
+	items[index] = null

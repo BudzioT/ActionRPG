@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="WeaponItem" load_steps=2 format=3 uid="uid://mdgfi53qxfuo"]
+
+[ext_resource type="Script" path="res://Scripts/Objects/weapon_item.gd" id="1_upjxl"]
+
+[resource]
+script = ExtResource("1_upjxl")
+attack_type = ""
+left_attachment = Vector2(0, 0)
+right_attachment = Vector2(0, 0)
+front_attachment = Vector2(0, 0)
+back_attachment = Vector2(0, 0)
+left_depth_index = 0
+right_depth_index = 0
+front_depth_index = 0
+back_depth_index = 0
+left_rotation = 0
+right_rotation = 0
+front_rotation = 0
+back_rotation = 0
