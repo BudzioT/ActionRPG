@@ -2,9 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/Objects/pick_up_item.gd" id="1_v74qp"]
 [ext_resource type="Texture2D" uid="uid://cv37nc0pj6ey3" path="res://Assets/Graphics/Items/Weapons/Book/Sprite.png" id="2_tfgg0"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_n7yoy"]
-size = Vector2(8.97316, 9.01196)
+[ext_resource type="Shape2D" uid="uid://dho3aqgup3yru" path="res://Resources/Weapons/SpellBook/spell_book_collision.tres" id="3_j5anb"]
 
 [node name="PickUpItem" type="Area2D"]
 collision_layer = 8
@@ -15,4 +13,4 @@ texture = ExtResource("2_tfgg0")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(0.0103908, -0.00217152)
-shape = SubResource("RectangleShape2D_n7yoy")
+shape = ExtResource("3_j5anb")

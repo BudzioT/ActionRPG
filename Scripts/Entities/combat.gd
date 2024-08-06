@@ -121,5 +121,3 @@ func _attack_animation_finished():
 	# Hide the weapons when animation is finished
 	right_weapon_sprite.hide()
 	left_weapon_sprite.hide()
-	
-	print("FINISHED")

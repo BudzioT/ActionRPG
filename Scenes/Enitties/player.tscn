@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://d1e6vq3klftou"]
+[gd_scene load_steps=34 format=3 uid="uid://d1e6vq3klftou"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/player.gd" id="1_7b0rh"]
 [ext_resource type="Texture2D" uid="uid://cgg24qsmsiwer" path="res://Assets/Graphics/Actor/Characters/Princess/SpriteSheet.png" id="1_xxm55"]
@@ -8,7 +8,6 @@
 [ext_resource type="Script" path="res://Scripts/UI/inventory.gd" id="6_rie6h"]
 [ext_resource type="PackedScene" uid="uid://c2oxax80p2shi" path="res://Scenes/Ui/main_ui.tscn" id="7_tpg1v"]
 [ext_resource type="Script" path="res://Scripts/Entities/combat.gd" id="8_0f6py"]
-[ext_resource type="Texture2D" uid="uid://dxogeqgmbh107" path="res://Assets/Graphics/Items/Weapons/Book/SpriteInHand.png" id="9_vrfig"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_px7q1"]
 atlas = ExtResource("1_xxm55")
@@ -290,10 +289,6 @@ collision_layer = 16
 collision_mask = 32
 
 [node name="Collision" type="CollisionShape2D" parent="Combat/LeftWeaponSprite/AttackArea"]
-
-[node name="SpriteInHand" type="Sprite2D" parent="."]
-position = Vector2(0, 15)
-texture = ExtResource("9_vrfig")
 
 [connection signal="animation_finished" from="Sprite" to="Sprite" method="_animation_finished"]
 [connection signal="area_entered" from="ItemArea" to="." method="_item_area_entered"]
