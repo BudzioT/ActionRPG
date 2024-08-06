@@ -98,8 +98,9 @@ func on_spell_slot_clicked(index: int):
 	# Emit a proper signal
 	spell_slot_clicked.emit(index)
 	
-func set_spell_slot(index: int):
+func set_selected_spell_slot(index: int):
 	"""Set the selected spell slot"""
 	# Go through each of slots and mark it as selected if needed
+	print_debug(spell_slots[index])
 	for slot in spell_slots.size():
-		spell_slots[index].toggle_button_selected(index == slot)
+		spell_slots[slot].toggle_button_selected_variation(index == slot)

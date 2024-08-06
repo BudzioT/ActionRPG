@@ -103,6 +103,6 @@ func add_item(item: InventoryItem):
 	if item.amount > 1:
 		amount_label.text = str(item.amount)
 		
-func toggle_button_selected(is_selected: bool):
+func toggle_button_selected_variation(is_selected: bool):
 	"""Select a button or unselect it"""
 	button.theme_type_variation = "selected" if is_selected else ""
