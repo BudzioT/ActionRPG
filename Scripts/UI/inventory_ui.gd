@@ -19,6 +19,9 @@ signal spell_slot_clicked(index: int)
 	$BackgrounContainer/Background/InventoryContainer/InventoryArea/SpellUI/SpellContainer/Ice
 ]
 
+@onready var spell_ui: VBoxContainer \
+	= $BackgrounContainer/Background/InventoryContainer/InventoryArea/SpellUI
+
 var INVENTORY_SLOT_SCENE: PackedScene \
 	= preload("res://Scenes/Ui/inventory_slot.tscn")	
 
@@ -104,3 +107,7 @@ func set_selected_spell_slot(index: int):
 	print_debug(spell_slots[index])
 	for slot in spell_slots.size():
 		spell_slots[slot].toggle_button_selected_variation(index == slot)
+		
+func toggle_spells(visibility: bool):
+	"""Turn on or off visibility of spell UI"""
+	spell_ui.visible = visibility

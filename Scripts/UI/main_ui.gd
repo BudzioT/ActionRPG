@@ -22,3 +22,11 @@ func equip_item(item: InventoryItem, slot_type: String):
 	"""Equip given item to the proper slot type"""
 	if item:
 		slots_dictionary[slot_type].set_texture(item.texture)
+		
+func toggle_spells(visibility: bool, texture: Texture):
+	"""Show or hide the spell slot, with the given texture"""
+	spell_slot.visible = visibility
+	
+	# If spell slot is visible, set its proper texture
+	if visibility:
+		spell_slot.set_texture(texture)

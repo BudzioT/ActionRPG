@@ -13,7 +13,7 @@ var speed: float
 var damage: int
 
 
-"""----------------------- USER-DEFINED FUNCTIONS -----------------------"""
+"""----------------------- BUILT-IN FUNCTIONS -----------------------"""
 func _process(delta: float) -> void:
 	"""Process spell changes over frames"""
 	# Move the spell

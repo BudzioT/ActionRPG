@@ -140,6 +140,9 @@ func _item_dropped(index: int):
 	# Drop this item onto the ground
 	_drop_item_ground(index)
 	
+	# Set visibility of spells
+	_set_spells_visibility()
+	
 func _clear_slot(index: int):
 	"""Clear an inventory slot with the given index"""
 	# Decrease occupied slot count
@@ -210,3 +213,25 @@ func on_spell_slot_clicked(index: int):
 	
 	# Set the selected spell
 	inventory_ui.set_selected_spell_slot(index)
+	
+func _set_spells_visibility():
+	"""Turn on or off visibility of the spells"""
+	var spell_visibility = false
+	
+	# If player left weapon exists and is a magic weapon, set the flag to show spells
+	if combat.left_weapon != null:
+		if combat.left_weapon.attack_type == "Magic":
+			spell_visibility = true
+	
+	# If spells aren't visible yet, check the right weapon
+	if not spell_visibility:
+		if combat.right_weapon != null:
+			if combat.right_weapon.attack_type == "Magic":
+				spell_visibility = true
+	
+	# Show the UI if there is a need			
+	inventory_ui.toggle_spells(spell_visibility)
+	
+	# Hide it if needed
+	if not spell_visibility:
+		main_ui.toggle_spells(false, null)

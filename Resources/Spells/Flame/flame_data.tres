@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="SpellData" load_steps=4 format=3 uid="uid://bssybfkdul287"]
+
+[ext_resource type="Shape2D" uid="uid://b8lahb0i1awu7" path="res://Resources/Spells/Flame/flame_collision.tres" id="1_cu3q4"]
+[ext_resource type="Script" path="res://Scripts/Objects/Spells/spell_data.gd" id="2_vtldo"]
+[ext_resource type="Texture2D" uid="uid://oif5cjbldhn1" path="res://Assets/Graphics/Items/Scroll/ScrollFire.png" id="3_fn8rk"]
+
+[resource]
+script = ExtResource("2_vtldo")
+name = "Flame"
+ui_texture = ExtResource("3_fn8rk")
+start_rotation = 90
+collision = ExtResource("1_cu3q4")
+speed = 45.0
+start_cooldown = 2.0
+damage = 15

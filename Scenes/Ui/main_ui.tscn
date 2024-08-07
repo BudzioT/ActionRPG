@@ -36,6 +36,7 @@ layout_mode = 2
 slot_name = "Left  H"
 
 [node name="Spell" parent="MainUIContainer/SlotContainer" instance=ExtResource("1_xnuqj")]
+visible = false
 layout_mode = 2
 slot_name = "Spell"
 

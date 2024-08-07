@@ -70,6 +70,7 @@ size_flags_vertical = 4
 columns = 3
 
 [node name="SpellUI" type="VBoxContainer" parent="BackgrounContainer/Background/InventoryContainer/InventoryArea"]
+visible = false
 layout_mode = 2
 
 [node name="Label" type="Label" parent="BackgrounContainer/Background/InventoryContainer/InventoryArea/SpellUI"]
